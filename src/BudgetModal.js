@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Dialog from "material-ui/Dialog";
+import Dialog, { DialogActions, DialogTitle } from "material-ui/Dialog";
 import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
 
@@ -41,23 +41,16 @@ class BudgetModal extends Component {
   };
 
   render() {
-    const actions = [
-      <Button label="Cancel" primary onClick={() => this.props.onClose()} />,
-      <Button
-        label="Submit"
-        primary
-        disabled={this.state.isDisabled}
-        onClick={() => this.props.onClose()}
-      />
-    ];
     return (
       <Dialog
-        actions={actions}
+        fullWidth
         open={this.props.isOpen}
         onEscapeKeyDown={this.handleOnClose}
         onBackdropClick={this.handleOnClose}
       >
-        <h2>{this.props.values ? "Edit Budget" : "Create a new Budget"}</h2>
+        <DialogTitle>
+          {this.props.values ? "Edit Budget" : "Create a new Budget"}
+        </DialogTitle>
         <div style={{ display: "flex", flexDirection: "column", margin: 20 }}>
           <TextField
             fullWidth
@@ -84,6 +77,19 @@ class BudgetModal extends Component {
             onKeyUp={this.handleKeyup}
           />
         </div>
+
+        <DialogActions>
+          <Button color="primary" onClick={() => this.props.onClose()}>
+            Cancel
+          </Button>
+          <Button
+            color="primary"
+            disabled={this.state.isDisabled}
+            onClick={() => this.props.onClose()}
+          >
+            Submit
+          </Button>
+        </DialogActions>
       </Dialog>
     );
   }
