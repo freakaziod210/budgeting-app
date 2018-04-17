@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
+import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
 
 class BudgetModal extends Component {
@@ -36,14 +36,14 @@ class BudgetModal extends Component {
     }
   };
 
+  handleOnClose = () => {
+    this.props.onClose();
+  };
+
   render() {
     const actions = [
-      <FlatButton
-        label="Cancel"
-        primary
-        onClick={() => this.props.onClose()}
-      />,
-      <FlatButton
+      <Button label="Cancel" primary onClick={() => this.props.onClose()} />,
+      <Button
         label="Submit"
         primary
         disabled={this.state.isDisabled}
@@ -51,29 +51,37 @@ class BudgetModal extends Component {
       />
     ];
     return (
-      <Dialog actions={actions} modal={true} open={this.props.isOpen}>
+      <Dialog
+        actions={actions}
+        open={this.props.isOpen}
+        onEscapeKeyDown={this.handleOnClose}
+        onBackdropClick={this.handleOnClose}
+      >
         <h2>{this.props.values ? "Edit Budget" : "Create a new Budget"}</h2>
         <div style={{ display: "flex", flexDirection: "column", margin: 20 }}>
           <TextField
             fullWidth
-            hintText="example: Awesome Budget"
-            floatingLabelText="Name"
+            placeholder="example: Awesome Budget"
+            label="Name"
             value={this.state.budgetName}
             onChange={this.handleBudgetNameChange}
+            onKeyUp={this.handleKeyup}
           />
           <TextField
             fullWidth
-            hintText="example: Awesome Budget Description"
-            floatingLabelText="Description"
+            placeholder="example: Awesome Budget Description"
+            label="Description"
             value={this.state.budgetDescription}
             onChange={this.handleBudgetDescriptionChange}
+            onKeyUp={this.handleKeyup}
           />
           <TextField
             fullWidth
-            hintText="example: 940"
-            floatingLabelText="Amount"
+            placeholder="example: 940"
+            label="Amount"
             value={this.state.budgetAmount}
             onChange={this.handleBudgetAmountChange}
+            onKeyUp={this.handleKeyup}
           />
         </div>
       </Dialog>
