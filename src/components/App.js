@@ -5,19 +5,16 @@ import AddIcon from "@material-ui/icons/Add";
 import BudgetModal from "./BudgetModal";
 
 class App extends Component {
-  state = {
-    open: false
-  };
-
   handleOpen = () => {
-    this.setState({ open: true });
+    this.props.onModalOpen();
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.props.onModalClose();
   };
 
   render() {
+    const { isModalOpen } = this.props;
     return (
       <div>
         <Card
@@ -42,7 +39,7 @@ class App extends Component {
           <AddIcon />
         </Button>
         <BudgetModal
-          isOpen={this.state.open}
+          isOpen={isModalOpen}
           onClose={this.handleClose}
           values={{
             name: " Budget Name",
