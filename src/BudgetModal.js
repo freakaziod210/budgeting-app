@@ -46,7 +46,6 @@ class BudgetModal extends Component {
         fullWidth
         open={this.props.isOpen}
         onEscapeKeyDown={this.handleOnClose}
-        onBackdropClick={this.handleOnClose}
       >
         <DialogTitle>
           {this.props.values ? "Edit Budget" : "Create a new Budget"}
