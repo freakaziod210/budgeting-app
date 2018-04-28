@@ -4,12 +4,18 @@ import "./index.css";
 import AppContainer from "./components/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import modalReducer from "./reducers/index";
+import { reducer as formReducer } from "redux-form";
+
+const rootReducer = combineReducers({
+  modal: modalReducer,
+  form: formReducer
+});
 
 const store = createStore(
-  modalReducer,
-  { isModalOpen: false },
+  rootReducer,
+  { modal: { isModalOpen: false } },
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

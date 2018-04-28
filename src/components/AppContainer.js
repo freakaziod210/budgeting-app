@@ -3,7 +3,7 @@ import { openModal, closeModal } from "../actions/index";
 import App from "./App";
 
 const mapStateToProps = state => ({
-  isModalOpen: state.isModalOpen
+  isModalOpen: state.modal.isModalOpen
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -36,15 +36,7 @@ const App = ({ onModalOpen, onModalClose, isModalOpen }) => {
       >
         <AddIcon />
       </Button>
-      <BudgetModal
-        isOpen={isModalOpen}
-        onClose={handleClose}
-        values={{
-          name: " Budget Name",
-          description: "Budget Description",
-          amount: "123456789"
-        }}
-      />
+      <BudgetModal isOpen={isModalOpen} onClose={handleClose} />
     </div>
   );
 };
