@@ -4,7 +4,7 @@ import Button from "material-ui/Button";
 import AddIcon from "@material-ui/icons/Add";
 import BudgetModal from "./BudgetModal";
 
-const App = ({ onModalOpen, onModalClose, isModalOpen }) => {
+const App = ({ onModalOpen, onModalClose, isModalOpen, budgetValues }) => {
   const handleOpen = () => {
     onModalOpen();
   };
@@ -36,7 +36,11 @@ const App = ({ onModalOpen, onModalClose, isModalOpen }) => {
       >
         <AddIcon />
       </Button>
-      <BudgetModal isOpen={isModalOpen} onClose={handleClose} />
+      <BudgetModal
+        budgetValues={budgetValues}
+        isOpen={isModalOpen}
+        onClose={handleClose}
+      />
     </div>
   );
 };

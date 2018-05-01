@@ -13,9 +13,22 @@ const rootReducer = combineReducers({
   form: formReducer
 });
 
+const initialState = {
+  modal: { isModalOpen: false },
+  form: {
+    currentBudget: {
+      values: {
+        budgetName: "",
+        budgetDescription: "",
+        budgetAmount: ""
+      }
+    }
+  }
+};
+
 const store = createStore(
   rootReducer,
-  { modal: { isModalOpen: false } },
+  initialState,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

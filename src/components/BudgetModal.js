@@ -3,41 +3,35 @@ import PropTypes from "prop-types";
 import Dialog, { DialogActions, DialogTitle } from "material-ui/Dialog";
 import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
+import { Field, Form, reduxForm } from "redux-form";
+
+const RenderTextField = ({
+  input,
+  meta,
+  fullWidth,
+  type,
+  label,
+  placeholder
+}) => (
+  <TextField
+    {...input}
+    label={label}
+    fullWidth
+    type={type}
+    placeholder={placeholder}
+  />
+);
 
 class BudgetModal extends Component {
-  state = {
-    budgetName: (this.props.values && this.props.values.name) || "",
-    budgetDescription:
-      (this.props.values && this.props.values.description) || "",
-    budgetAmount: (this.props.values && this.props.values.amount) || "",
-    isDisabled: true
-  };
-
-  handleBudgetNameChange = e => {
-    this.setState({ budgetName: e.target.value });
-    this.shouldDisableSubmit();
-  };
-
-  handleBudgetDescriptionChange = e => {
-    this.setState({ budgetDescription: e.target.value });
-  };
-
-  handleBudgetAmountChange = e => {
-    this.setState({ budgetAmount: e.target.value });
-    this.shouldDisableSubmit();
-  };
-
-  shouldDisableSubmit = () => {
-    const { budgetAmount, budgetName } = this.state;
-    if (budgetAmount === "" || budgetName === "") {
-      this.setState({ isDisabled: true });
-    } else {
-      this.setState({ isDisabled: false });
-    }
-  };
-
   handleOnClose = () => {
     this.props.onClose();
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    // this.props.handleSubmit(e);
+    // this.props.onClose();
   };
 
   render() {
@@ -50,45 +44,46 @@ class BudgetModal extends Component {
         <DialogTitle>
           {this.props.values ? "Edit Budget" : "Create a new Budget"}
         </DialogTitle>
-        <div style={{ display: "flex", flexDirection: "column", margin: 20 }}>
-          <TextField
+        <Form
+          onSubmit={this.handleSubmit}
+          style={{ display: "flex", flexDirection: "column", margin: 20 }}
+        >
+          <Field
+            type="text"
+            component={RenderTextField}
+            name="budgetName"
             fullWidth
             placeholder="example: Awesome Budget"
             label="Name"
-            value={this.state.budgetName}
-            onChange={this.handleBudgetNameChange}
-            onKeyUp={this.handleKeyup}
+            value={this.props.budgetValues.budgetName}
           />
-          <TextField
+          <Field
+            type="text"
+            component={RenderTextField}
+            name="budgetDescription"
             fullWidth
             placeholder="example: Awesome Budget Description"
             label="Description"
-            value={this.state.budgetDescription}
-            onChange={this.handleBudgetDescriptionChange}
-            onKeyUp={this.handleKeyup}
+            value={this.props.budgetValues.budgetDescription}
           />
-          <TextField
+          <Field
+            type="text"
+            component={RenderTextField}
+            name="budgetAmount"
             fullWidth
             placeholder="example: 940"
             label="Amount"
-            value={this.state.budgetAmount}
-            onChange={this.handleBudgetAmountChange}
-            onKeyUp={this.handleKeyup}
+            value={this.props.budgetValues.budgetAmount}
           />
-        </div>
-
-        <DialogActions>
-          <Button color="primary" onClick={() => this.props.onClose()}>
-            Cancel
-          </Button>
-          <Button
-            color="primary"
-            disabled={this.state.isDisabled}
-            onClick={() => this.props.onClose()}
-          >
-            Submit
-          </Button>
-        </DialogActions>
+          <DialogActions>
+            <Button color="primary" onClick={() => this.props.onClose()}>
+              Cancel
+            </Button>
+            <Button color="primary" type="submit">
+              Submit
+            </Button>
+          </DialogActions>
+        </Form>
       </Dialog>
     );
   }
@@ -105,4 +100,4 @@ BudgetModal.propTypes = {
     }) || null
 };
 
-export default BudgetModal;
+export default reduxForm({ form: "currentBudget" })(BudgetModal);
