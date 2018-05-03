@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { openModal, closeModal } from "../actions/index";
+import { openModal, closeModal } from "../actions/appActions";
 import App from "./App";
 
 const mapStateToProps = state => ({

@@ -5,7 +5,7 @@ import AppContainer from "./components/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
-import appReducer from "./reducers/index";
+import appReducer from "./reducers/appReducer";
 import { reducer as formReducer } from "redux-form";
 
 const rootReducer = combineReducers({
