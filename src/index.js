@@ -9,12 +9,12 @@ import modalReducer from "./reducers/index";
 import { reducer as formReducer } from "redux-form";
 
 const rootReducer = combineReducers({
-  modal: modalReducer,
+  app: modalReducer,
   form: formReducer
 });
 
 const initialState = {
-  modal: { isModalOpen: false },
+  app: { isModalOpen: false },
   form: {
     currentBudget: {
       values: {
