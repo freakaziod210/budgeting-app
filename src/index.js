@@ -5,11 +5,11 @@ import AppContainer from "./components/AppContainer";
 import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
-import modalReducer from "./reducers/index";
+import appReducer from "./reducers/index";
 import { reducer as formReducer } from "redux-form";
 
 const rootReducer = combineReducers({
-  app: modalReducer,
+  app: appReducer,
   form: formReducer
 });
 
