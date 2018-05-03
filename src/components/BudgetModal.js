@@ -100,4 +100,4 @@ BudgetModal.propTypes = {
     }) || null
 };
 
-export default reduxForm({ form: "currentBudget" })(BudgetModal);
+export default reduxForm({ form: "budgetForm" })(BudgetModal);

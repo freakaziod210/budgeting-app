@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { openModal, closeModal } from "../actions/appActions";
+import { setCurrentBudget, clearCurrentBudget } from "../actions/budgetActions";
 import App from "./App";
 
 const mapStateToProps = state => ({
@@ -14,7 +15,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onModalOpen: () => dispatch(openModal()),
-  onModalClose: () => dispatch(closeModal())
+  onModalClose: () => dispatch(closeModal()),
+  onBudgetSelect: budget => dispatch(setCurrentBudget(budget)),
+  onBudgetClear: () => dispatch(clearCurrentBudget(null))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

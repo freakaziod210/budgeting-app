@@ -6,17 +6,19 @@ import registerServiceWorker from "./registerServiceWorker";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 import appReducer from "./reducers/appReducer";
+import budgetReducer from "./reducers/budgetReducer";
 import { reducer as formReducer } from "redux-form";
 
 const rootReducer = combineReducers({
   app: appReducer,
-  form: formReducer
+  form: formReducer,
+  currentBudget: budgetReducer
 });
 
 const initialState = {
   app: { isModalOpen: false },
   form: {
-    currentBudget: {
+    budgetForm: {
       values: {
         budgetName: "",
         budgetDescription: "",

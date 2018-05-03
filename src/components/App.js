@@ -4,7 +4,14 @@ import Button from "material-ui/Button";
 import AddIcon from "@material-ui/icons/Add";
 import BudgetModal from "./BudgetModal";
 
-const App = ({ onModalOpen, onModalClose, isModalOpen, budgetValues }) => (
+const App = ({
+  onModalOpen,
+  onModalClose,
+  isModalOpen,
+  budgetValues,
+  onBudgetSelect,
+  onBudgetClear
+}) => (
   <div>
     <Card
       raised
