@@ -12,7 +12,8 @@ import { reducer as formReducer } from "redux-form";
 const rootReducer = combineReducers({
   app: appReducer,
   form: formReducer,
-  currentBudget: budgetReducer
+  budget: budgetReducer,
+
 });
 
 const initialState = {
@@ -20,11 +21,15 @@ const initialState = {
   form: {
     budgetForm: {
       values: {
-        budgetName: "",
-        budgetDescription: "",
-        budgetAmount: ""
+        name: "",
+        description: "",
+        amount: ""
       }
     }
+  },
+  budget: {
+    currentBudget: {},
+    budgets: [],
   }
 };
 

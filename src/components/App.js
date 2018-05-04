@@ -8,38 +8,40 @@ const App = ({
   onModalOpen,
   onModalClose,
   isModalOpen,
-  budgetValues,
+  budgetFormValues,
   onBudgetSelect,
-  onBudgetClear
+  onBudgetClear,
+  onAddBudget
 }) => (
-  <div>
-    <Card
-      raised
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: 100,
-        width: 200,
-        borderRadius: 8
-      }}
-    >
-      <div className="App">This app is working</div>
-    </Card>
-    <Button
-      variant="fab"
-      color="primary"
-      onClick={() => onModalOpen()}
-      style={{ position: "fixed", right: 30, bottom: 30 }}
-    >
-      <AddIcon />
-    </Button>
-    <BudgetModal
-      budgetValues={budgetValues}
-      isOpen={isModalOpen}
-      onClose={() => onModalClose()}
-    />
-  </div>
-);
+    <div>
+      <Card
+        raised
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 100,
+          width: 200,
+          borderRadius: 8
+        }}
+      >
+        <div className="App">This app is working</div>
+      </Card>
+      <Button
+        variant="fab"
+        color="primary"
+        onClick={() => onModalOpen()}
+        style={{ position: "fixed", right: 30, bottom: 30 }}
+      >
+        <AddIcon />
+      </Button>
+      <BudgetModal
+        onSubmit={onAddBudget}
+        budgetFormValues={budgetFormValues}
+        isOpen={isModalOpen}
+        onClose={() => onModalClose()}
+      />
+    </div>
+  );
 
 export default App;

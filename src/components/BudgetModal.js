@@ -13,14 +13,14 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-  <TextField
-    {...input}
-    label={label}
-    fullWidth
-    type={type}
-    placeholder={placeholder}
-  />
-);
+    <TextField
+      {...input}
+      label={label}
+      fullWidth
+      type={type}
+      placeholder={placeholder}
+    />
+  );
 
 class BudgetModal extends Component {
   handleOnClose = () => {
@@ -29,6 +29,7 @@ class BudgetModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.onSubmit(this.props.budgetFormValues)
 
     // this.props.handleSubmit(e);
     // this.props.onClose();
@@ -51,29 +52,29 @@ class BudgetModal extends Component {
           <Field
             type="text"
             component={RenderTextField}
-            name="budgetName"
+            name="name"
             fullWidth
             placeholder="example: Awesome Budget"
             label="Name"
-            value={this.props.budgetValues.budgetName}
+            value={this.props.budgetFormValues.name}
           />
           <Field
             type="text"
             component={RenderTextField}
-            name="budgetDescription"
+            name="description"
             fullWidth
             placeholder="example: Awesome Budget Description"
             label="Description"
-            value={this.props.budgetValues.budgetDescription}
+            value={this.props.budgetFormValues.description}
           />
           <Field
             type="text"
             component={RenderTextField}
-            name="budgetAmount"
+            name="amount"
             fullWidth
             placeholder="example: 940"
             label="Amount"
-            value={this.props.budgetValues.budgetAmount}
+            value={this.props.budgetFormValues.amount}
           />
           <DialogActions>
             <Button color="primary" onClick={() => this.props.onClose()}>
@@ -92,7 +93,7 @@ class BudgetModal extends Component {
 BudgetModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  values:
+  budgetFormValues:
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       amount: PropTypes.string.isRequired,
