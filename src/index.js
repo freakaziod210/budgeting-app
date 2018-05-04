@@ -12,8 +12,7 @@ import { reducer as formReducer } from "redux-form";
 const rootReducer = combineReducers({
   app: appReducer,
   form: formReducer,
-  budget: budgetReducer,
-
+  budget: budgetReducer
 });
 
 const initialState = {
@@ -29,7 +28,7 @@ const initialState = {
   },
   budget: {
     currentBudget: {},
-    budgets: [],
+    budgets: []
   }
 };
 

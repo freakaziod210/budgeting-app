@@ -13,14 +13,14 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-    <TextField
-      {...input}
-      label={label}
-      fullWidth
-      type={type}
-      placeholder={placeholder}
-    />
-  );
+  <TextField
+    {...input}
+    label={label}
+    fullWidth
+    type={type}
+    placeholder={placeholder}
+  />
+);
 
 class BudgetModal extends Component {
   handleOnClose = () => {
@@ -29,7 +29,7 @@ class BudgetModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.props.budgetFormValues)
+    this.props.onSubmit(this.props.budgetFormValues);
 
     // this.props.handleSubmit(e);
     // this.props.onClose();
