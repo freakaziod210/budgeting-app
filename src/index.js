@@ -28,7 +28,144 @@ const initialState = {
   },
   budget: {
     currentBudget: {},
-    budgets: []
+    budgets: [
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+
+      {
+        amount: "12345",
+        description: "New Description",
+        name: "New Name"
+      },
+    ]
   }
 };
 
