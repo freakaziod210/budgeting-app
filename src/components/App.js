@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "material-ui/Card";
-import Grid from 'material-ui/Grid';
 import Button from "material-ui/Button";
 import AddIcon from "@material-ui/icons/Add";
 import BudgetModal from "./BudgetModal";
@@ -18,13 +17,14 @@ const App = ({
     <div
       style={{
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
+        padding: '12px'
       }}
     >
       <div
         style={{
           height: "100%",
-          maxWidth: "1280px",
+          maxWidth: "1296px",
           display: "flex",
           flexWrap: "wrap",
           margin: '0 auto'
@@ -33,16 +33,15 @@ const App = ({
         {budgets.map((b, i) => (
           <Card
             key={`${b.name}-${i}`}
-            raised
             style={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              height: 150,
+              height: 230,
               width: 300,
-              borderRadius: 4,
-              margin: 10
+              borderRadius: 3,
+              margin: 12
             }}
           >
             <div>{`${b.name}-${i}`}</div>

@@ -13,14 +13,14 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-  <TextField
-    {...input}
-    label={label}
-    fullWidth
-    type={type}
-    placeholder={placeholder}
-  />
-);
+    <TextField
+      {...input}
+      label={label}
+      fullWidth
+      type={type}
+      placeholder={placeholder}
+    />
+  );
 
 class BudgetModal extends Component {
   handleOnClose = () => {
@@ -41,6 +41,7 @@ class BudgetModal extends Component {
         fullWidth
         open={this.props.isOpen}
         onEscapeKeyDown={this.handleOnClose}
+        onBackdropClick={this.handleOnClose}
       >
         <DialogTitle>
           {this.props.values ? "Edit Budget" : "Create a new Budget"}
