@@ -13,27 +13,39 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-    <TextField
-      {...input}
-      label={label}
-      fullWidth
-      type={type}
-      placeholder={placeholder}
-    />
-  );
+  <TextField
+    {...input}
+    label={label}
+    fullWidth
+    type={type}
+    placeholder={placeholder}
+  />
+);
 
 class BudgetModal extends Component {
+  state = {
+    isEditing: false
+  };
+
   handleOnClose = () => {
     this.props.onClose();
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.props.budgetFormValues);
+    const id = Date.now();
+    this.props.onSubmit({ id, ...this.props.budgetFormValues });
 
     // this.props.handleSubmit(e);
     // this.props.onClose();
   };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (!!nextProps.currentBudget) {
+      return { isEditing: true };
+    }
+    return null;
+  }
 
   render() {
     return (
@@ -44,7 +56,7 @@ class BudgetModal extends Component {
         onBackdropClick={this.handleOnClose}
       >
         <DialogTitle>
-          {this.props.values ? "Edit Budget" : "Create a new Budget"}
+          {this.props.currentBudget ? "Edit Budget" : "Create a new Budget"}
         </DialogTitle>
         <Form
           onSubmit={this.handleSubmit}

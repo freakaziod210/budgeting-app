@@ -8,11 +8,10 @@ const App = ({
   onModalOpen,
   onModalClose,
   isModalOpen,
-  budgetFormValues,
   onBudgetSelect,
   onBudgetClear,
   onAddBudget,
-  budget: { budgets, currentBudget }
+  budget: { budgets, budgetFormValues, currentBudget }
 }) => (
   <div
     style={{
@@ -32,10 +31,12 @@ const App = ({
     >
       {budgets.map((b, i) => (
         <BudgetCard
-          key={`${b.name}-${i}`}
+          key={b.id}
           name={`${b.name}-${i}`}
           description={b.description}
           amount={b.amount}
+          id={b.id}
+          onBudgetSelect={onBudgetSelect}
         />
       ))}
     </div>
@@ -52,6 +53,7 @@ const App = ({
       budgetFormValues={budgetFormValues}
       isOpen={isModalOpen}
       onClose={() => onModalClose()}
+      currentBudget={currentBudget}
     />
   </div>
 );

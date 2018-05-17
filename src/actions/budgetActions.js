@@ -1,16 +1,16 @@
 import createActions from "./createActions";
 
 const actionNames = [
-  "SET_CURRENT_BUDGET",
+  "SET_CURRENT_BUDGET_ID",
   "CLEAR_CURRENT_BUDGET",
   "ADD_BUDGET"
 ];
 
 export const types = createActions(actionNames);
 
-export const setCurrentBudget = currentBudget => ({
-  type: types.SET_CURRENT_BUDGET,
-  currentBudget
+export const setCurrentBudget = budgetId => ({
+  type: types.SET_CURRENT_BUDGET_ID,
+  budgetId
 });
 
 export const clearCurrentBudget = () => ({

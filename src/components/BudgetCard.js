@@ -5,9 +5,10 @@ import Typography from "material-ui/Typography";
 
 class BudgetCard extends Component {
   render() {
-    const { name, description, amount } = this.props;
+    const { name, description, amount, onBudgetSelect, id } = this.props;
     return (
       <Card
+        onClick={() => onBudgetSelect(id)}
         style={{
           display: "flex",
           flexDirection: "column",
