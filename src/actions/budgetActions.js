@@ -22,7 +22,12 @@ export const clearCurrentBudget = () => ({
   type: types.CLEAR_CURRENT_BUDGET
 });
 
-export const addBudget = budget => ({
-  type: types.ADD_BUDGET,
-  budget
-});
+export const addBudget = () => (dispatch, getState) => {
+  const { values: budget } = getState().form.budgetForm;
+  const id = Date.now();
+
+  return dispatch({
+    type: types.ADD_BUDGET,
+    budget: { id, ...budget }
+  })
+}

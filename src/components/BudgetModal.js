@@ -52,7 +52,6 @@ class BudgetModal extends Component {
   render() {
     // const { currentBudget } = this.state;
     const { currentBudget } = this.props;
-    console.log(currentBudget)
 
     return (
       <Dialog
@@ -71,7 +70,7 @@ class BudgetModal extends Component {
           <Field
             type="text"
             component={RenderTextField}
-            name="title"
+            name="name"
             fullWidth
             placeholder="example: Awesome Budget"
             label="Name"
@@ -111,7 +110,7 @@ BudgetModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   budgetFormValues:
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       amount: PropTypes.string.isRequired,
       description: PropTypes.string
     }) || null
