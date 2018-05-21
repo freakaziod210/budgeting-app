@@ -13,18 +13,18 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-  <TextField
-    {...input}
-    label={label}
-    fullWidth
-    type={type}
-    placeholder={placeholder}
-  />
-);
+    <TextField
+      {...input}
+      label={label}
+      fullWidth
+      type={type}
+      placeholder={placeholder}
+    />
+  );
 
 class BudgetModal extends Component {
   state = {
-    isEditing: false
+    isEditing: false,
   };
 
   handleOnClose = () => {
@@ -33,21 +33,27 @@ class BudgetModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const id = Date.now();
-    this.props.onSubmit({ id, ...this.props.budgetFormValues });
+    this.props.onSubmit();
 
     // this.props.handleSubmit(e);
     // this.props.onClose();
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (!!nextProps.currentBudget) {
-      return { isEditing: true };
+    const { currentBudget } = nextProps;
+    if (currentBudget) {
+      return {
+        isEditing: true,
+      };
     }
     return null;
   }
 
   render() {
+    // const { currentBudget } = this.state;
+    const { currentBudget } = this.props;
+    console.log(currentBudget)
+
     return (
       <Dialog
         fullWidth
@@ -56,7 +62,7 @@ class BudgetModal extends Component {
         onBackdropClick={this.handleOnClose}
       >
         <DialogTitle>
-          {this.props.currentBudget ? "Edit Budget" : "Create a new Budget"}
+          {currentBudget ? "Edit Budget" : "Create a new Budget"}
         </DialogTitle>
         <Form
           onSubmit={this.handleSubmit}
@@ -65,11 +71,10 @@ class BudgetModal extends Component {
           <Field
             type="text"
             component={RenderTextField}
-            name="name"
+            name="title"
             fullWidth
             placeholder="example: Awesome Budget"
             label="Name"
-            value={this.props.budgetFormValues.name}
           />
           <Field
             type="text"
@@ -78,7 +83,6 @@ class BudgetModal extends Component {
             fullWidth
             placeholder="example: Awesome Budget Description"
             label="Description"
-            value={this.props.budgetFormValues.description}
           />
           <Field
             type="text"
@@ -87,7 +91,6 @@ class BudgetModal extends Component {
             fullWidth
             placeholder="example: 940"
             label="Amount"
-            value={this.props.budgetFormValues.amount}
           />
           <DialogActions>
             <Button color="primary" onClick={() => this.props.onClose()}>
@@ -114,4 +117,4 @@ BudgetModal.propTypes = {
     }) || null
 };
 
-export default reduxForm({ form: "budgetForm" })(BudgetModal);
+export default reduxForm({ form: "budgetForm", enableReinitialize: true })(BudgetModal);

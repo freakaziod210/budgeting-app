@@ -10,8 +10,7 @@ const initialState = {
     }
   },
   budget: {
-    currentBudget: {},
-    currentBudgetId: null,
+    currentBudget: null,
     budgets: [
       {
         id: 1,
