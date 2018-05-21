@@ -4,6 +4,7 @@ import Dialog, { DialogActions, DialogTitle } from "material-ui/Dialog";
 import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
 import { Field, Form, reduxForm } from "redux-form";
+import { connect } from "react-redux";
 
 const RenderTextField = ({
   input,
@@ -13,18 +14,18 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-    <TextField
-      {...input}
-      label={label}
-      fullWidth
-      type={type}
-      placeholder={placeholder}
-    />
-  );
+  <TextField
+    {...input}
+    label={label}
+    fullWidth
+    type={type}
+    placeholder={placeholder}
+  />
+);
 
-class BudgetModal extends Component {
+class _BudgetModal extends Component {
   state = {
-    isEditing: false,
+    isEditing: false
   };
 
   handleOnClose = () => {
@@ -34,16 +35,15 @@ class BudgetModal extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit();
-
-    // this.props.handleSubmit(e);
-    // this.props.onClose();
+    this.props.clearBudget();
+    this.props.onClose();
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const { currentBudget } = nextProps;
     if (currentBudget) {
       return {
-        isEditing: true,
+        isEditing: true
       };
     }
     return null;
@@ -105,15 +105,22 @@ class BudgetModal extends Component {
   }
 }
 
-BudgetModal.propTypes = {
+_BudgetModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   currentBudget: PropTypes.shape({
     name: PropTypes.string,
     description: PropTypes.string,
-    amount: PropTypes.string,
+    amount: PropTypes.string
   })
 };
 
-export default reduxForm({ form: "budgetForm", enableReinitialize: true })(BudgetModal);
+let BudgetModal = reduxForm({ form: "budgetForm", enableReinitialize: true })(
+  _BudgetModal
+);
+BudgetModal = connect(state => ({
+  initialValues: state.budget.currentBudget
+}))(BudgetModal);
+
+export default BudgetModal;
