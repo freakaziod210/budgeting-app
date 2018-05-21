@@ -108,12 +108,12 @@ class BudgetModal extends Component {
 BudgetModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  budgetFormValues:
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      amount: PropTypes.string.isRequired,
-      description: PropTypes.string
-    }) || null
+  onSubmit: PropTypes.func.isRequired,
+  currentBudget: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    amount: PropTypes.string,
+  })
 };
 
 export default reduxForm({ form: "budgetForm", enableReinitialize: true })(BudgetModal);
