@@ -3,7 +3,8 @@ import { openModal, closeModal } from "../actions/appActions";
 import {
   setCurrentBudget,
   clearCurrentBudget,
-  addBudget
+  addBudget,
+  editBudget
 } from "../actions/budgetActions";
 import App from "./App";
 
@@ -11,7 +12,7 @@ const mapStateToProps = state => ({
   isModalOpen: state.app.isModalOpen,
   budget: {
     currentBudget: state.budget.currentBudget || null,
-    budgets: state.budget.budgets || [],
+    budgets: state.budget.budgets || []
   }
 });
 
@@ -23,7 +24,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(openModal());
   },
   onBudgetClear: () => dispatch(clearCurrentBudget()),
-  onAddBudget: budget => dispatch(addBudget(budget))
+  onAddBudget: budget => dispatch(addBudget(budget)),
+  onEditBudget: id => dispatch(editBudget(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -33,10 +33,23 @@ class _BudgetModal extends Component {
   };
 
   handleSubmit = e => {
+    const {
+      onSubmit,
+      clearBudget,
+      onClose,
+      editBudget,
+      currentBudget
+    } = this.props;
     e.preventDefault();
-    this.props.onSubmit();
-    this.props.clearBudget();
-    this.props.onClose();
+
+    if (currentBudget) {
+      editBudget();
+    } else {
+      onSubmit();
+    }
+
+    clearBudget();
+    onClose();
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -96,7 +109,7 @@ class _BudgetModal extends Component {
               Cancel
             </Button>
             <Button color="primary" type="submit">
-              Submit
+              {currentBudget ? "Update" : "Submit"}
             </Button>
           </DialogActions>
         </Form>

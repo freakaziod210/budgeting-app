@@ -11,6 +11,7 @@ const App = ({
   onBudgetSelect,
   onBudgetClear,
   onAddBudget,
+  onEditBudget,
   budget: { budgets, currentBudget }
 }) => (
   <div
@@ -57,6 +58,7 @@ const App = ({
       onClose={() => onModalClose()}
       currentBudget={currentBudget}
       clearBudget={onBudgetClear}
+      editBudget={onEditBudget}
     />
   </div>
 );
