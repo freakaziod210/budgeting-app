@@ -14,14 +14,14 @@ const RenderTextField = ({
   label,
   placeholder
 }) => (
-  <TextField
-    {...input}
-    label={label}
-    fullWidth
-    type={type}
-    placeholder={placeholder}
-  />
-);
+    <TextField
+      {...input}
+      label={label}
+      fullWidth
+      type={type}
+      placeholder={placeholder}
+    />
+  );
 
 class _BudgetModal extends Component {
   state = {
@@ -63,7 +63,6 @@ class _BudgetModal extends Component {
   }
 
   render() {
-    // const { currentBudget } = this.state;
     const { currentBudget } = this.props;
 
     return (
