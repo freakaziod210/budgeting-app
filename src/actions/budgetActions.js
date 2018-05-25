@@ -35,11 +35,11 @@ export const addBudget = () => (dispatch, getState) => {
 
 export const editBudget = () => (dispatch, getState) => {
   const {
-    budget: { currentBudget, budgets }
+    form: { budgetForm: { values } }
   } = getState();
-  console.log(currentBudget, budgets);
+
   return dispatch({
-    type: types.ADD_BUDGET
-    // budget: { id, ...budget }
+    type: types.EDIT_BUDGET,
+    values
   });
 };
